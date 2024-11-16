@@ -1,20 +1,21 @@
-#ifndef TCPSOCKETINET_H
-#define TCPSOCKETINET_H
+#ifndef TCPSOCKINET_H
+#define TCPSOCKINET_H
 
 #pragma once
 
 #include "BaseInet.h"
 
 #include <string>
+#include <exception>
 
 #include <sockpp/tcp_socket.h>
 #include <sockpp/tcp_connector.h>
 
 
-class TCPSocketInet {
+class TCPSockInet {
 public:
-    TCPSocketInet() {};
-    virtual ~TCPSocketInet() {}; 
+    TCPSockInet();
+    virtual ~TCPSockInet();
 
     bool connect();
     bool disconnect();
@@ -29,4 +30,4 @@ private:
 
 
 
-#endif // TCPSOCKETINET_H
+#endif // TCPSOCKINET_H

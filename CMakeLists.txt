@@ -9,6 +9,7 @@ project(${PROJECT_NAME} VERSION 1.0.0)
 
 set(Sources
     src/main.cpp
+    src/TCPSockInet.cpp
 )
 
 add_executable(${PROJECT_NAME} ${Sources})
