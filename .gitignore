@@ -1,3 +1,5 @@
 .o
 build/
 .a
+.bash_profile
+.vscode
