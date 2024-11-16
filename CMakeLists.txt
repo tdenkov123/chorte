@@ -8,7 +8,7 @@ set(workspaceFolder $(WORKING_DIRECTORY))
 project(${PROJECT_NAME} VERSION 1.0.0)
 
 set(Sources
-    src/Chorte.h
+    src/main.cpp
 )
 
 add_executable(${PROJECT_NAME} ${Sources})
