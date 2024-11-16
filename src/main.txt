@@ -19,5 +19,5 @@ int main() {
     RuntimeEnvironment runtime(container);
     runtime.process();
 
-    return 0;
+    return 1;
 }
