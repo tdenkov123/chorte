@@ -10,6 +10,9 @@ project(${PROJECT_NAME} VERSION 1.0.0)
 set(Sources
     src/main.cpp
     src/TCPSockInet.cpp
+    src/FBContainer.cpp
+    src/FunctionBlock.h
+    src/RuntimeEnvironment.cpp
 )
 
 add_executable(${PROJECT_NAME} ${Sources})
