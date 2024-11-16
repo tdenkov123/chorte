@@ -1,7 +1,6 @@
 #include "TCPSockInet.h"
 
 
-<<<<<<< HEAD
 TCPSockInet::TCPSockInet() {
 
 }
@@ -29,8 +28,6 @@ bool TCPSockInet::disconnect() {
 }
 
 
-=======
->>>>>>> 29050d7 (Add .h and .cpp files)
 std::string TCPSockInet::read() {
     static const u_int16_t BUF_SIZE = 2048;
     std::string result;
