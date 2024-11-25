@@ -4,8 +4,12 @@
 #include "FunctionBlock.h"
 #include <iostream>
 
+template<typename data_type>
 class BasicFunctionBlock : public FunctionBlock {
-    std::string value;
+    data_type* data_inputs;
+    data_type* data_outputs;
+    std::string req;
+    std::string cnf;
 
 public:
     void processEvent(const std::string& event) override;
