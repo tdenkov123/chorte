@@ -7,7 +7,7 @@ class RuntimeEnvironment {
     FBContainer& container;
 
 public:
-    RuntimeEnvironment(FBContainer& fbContainer);
+    RuntimeEnvironment(FBContainer& fb_container);
 
     void process();
 };

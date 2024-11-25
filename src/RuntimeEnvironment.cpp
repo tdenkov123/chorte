@@ -1,16 +1,16 @@
 #include "RuntimeEnvironment.h"
 #include <iostream>
 
-RuntimeEnvironment::RuntimeEnvironment(FBContainer& fbContainer)
-    : container(fbContainer) {}
+RuntimeEnvironment::RuntimeEnvironment(FBContainer& fb_container)
+    : container(fb_container) {}
 
 void RuntimeEnvironment::process() {
     for (const auto& [id, block] : container.getAllBlocks()) {
-        if (block) {
-            block->processEvent("default_event");
-            std::cout << "Block " << id << " processed. Value: " 
-                      << block->getValue() << std::endl;
-        }
+        // if (block) {
+        //     block->processEvent("default_event");
+        //     std::cout << "Block " << id << " processed. Value: " 
+        //               << block->getValue() << std::endl;
+        // }
     }
 
     try {

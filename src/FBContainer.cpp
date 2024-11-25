@@ -1,28 +1,28 @@
 #include "FBContainer.h"
 #include <stdexcept>
 
-void FBContainer::addBlock(const std::string& id, std::shared_ptr<FunctionBlock> block) {
+void FBContainer::addBlock(const std::string& id, std::shared_ptr<BaseFB> block) {
     blocks[id] = block;
 }
 
 void FBContainer::removeBlock(const std::string& id) {
     blocks.erase(id);
-    if (startBlockId == id) {
-        startBlockId.clear(); // Очистка, если удалён стартовый блок
+    if (start_block == id) {
+        start_block.clear();
     }
 }
 
-std::shared_ptr<FunctionBlock> FBContainer::getBlock(const std::string& id) const {
+std::shared_ptr<BaseFB> FBContainer::getBlock(const std::string& id) const {
     auto it = blocks.find(id);
     return it != blocks.end() ? it->second : nullptr;
 }
 
 void FBContainer::createConnection(const std::string& from, const std::string& to) {
-    // Logic for connection (заглушка для дальнейшей реализации)
+    
 }
 
 void FBContainer::deleteConnection(const std::string& from, const std::string& to) {
-    // Logic for disconnection (заглушка для дальнейшей реализации)
+
 }
 
 const auto& FBContainer::getAllBlocks() const {
@@ -31,18 +31,18 @@ const auto& FBContainer::getAllBlocks() const {
 
 void FBContainer::setStartBlock(const std::string& id) {
     if (blocks.find(id) != blocks.end()) {
-        startBlockId = id;
+        start_block = id;
     } else {
         throw std::invalid_argument("Block with the given ID does not exist.");
     }
 }
 
-std::shared_ptr<FunctionBlock> FBContainer::getStartBlock() const {
-    if (startBlockId.empty()) {
+std::shared_ptr<BaseFB> FBContainer::getStartBlock() const {
+    if (start_block.empty()) {
         throw std::runtime_error("Start block is not set.");
     }
 
-    auto it = blocks.find(startBlockId);
+    auto it = blocks.find(start_block);
     if (it != blocks.end()) {
         return it->second;
     }

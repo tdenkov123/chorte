@@ -2,13 +2,11 @@
 
 
 TCPSockInet::TCPSockInet() {
-
+    sockpp::initialize();
 }
 
 
-TCPSockInet::~TCPSockInet() {
-    
-}
+TCPSockInet::~TCPSockInet() {}
 
 
 bool TCPSockInet::connect() {
