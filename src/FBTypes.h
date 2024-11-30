@@ -8,6 +8,17 @@
 #include <iostream>
 #include <type_traits>
 
+
+class START: public BaseFB {
+public:
+    explicit START(const std::string& _name) : BaseFB(_name) {
+        set_event_output("START", true);
+    }
+    void execute() override {}
+    std::string get_name() const override { return "START"; }
+};
+
+
 class PrintFB: public BaseFB {
 public:
     explicit PrintFB(const std::string& _name) : BaseFB(_name) {}
