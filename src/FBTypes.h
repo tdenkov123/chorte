@@ -21,7 +21,7 @@ public:
 
 class PrintFB: public BaseFB {
 public:
-    explicit PrintFB(const std::string& _name) : BaseFB(_name) {}
+    explicit PrintFB(const std::string& _name) : BaseFB(_name) { set_data_input("IN", 0); }
     void execute() override {
         for (const auto& [key, val] : get_data_inputs()) {
             std::cout << key << ": ";

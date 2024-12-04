@@ -16,6 +16,7 @@ public:
     virtual ~BaseFB() = default;
     virtual void execute() = 0;
     virtual std::string get_name() const = 0;
+    virtual BaseFB* get_resource() { return; }
     
     const std::unordered_map<std::string, DataVariant>& get_data_inputs() const { return data_inputs; }
     const std::unordered_map<std::string, DataVariant>& get_data_outputs() const { return data_outputs; }

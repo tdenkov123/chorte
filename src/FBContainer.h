@@ -9,16 +9,17 @@
 
 class FBContainer {
 public:
-    void addBlock(const std::string& id, std::shared_ptr<BaseFB> block);
-    void removeBlock(const std::string& id);
-    std::shared_ptr<BaseFB> getBlock(const std::string& id) const;
-    void createConnection(const std::string& from, const std::string& to);
-    void deleteConnection(const std::string& from, const std::string& to);
-    const auto& getAllBlocks() const { return blocks; }
-    void setStartBlock(const std::string& id);
-    std::shared_ptr<BaseFB> getStartBlock() const;
+    void add_block(const std::string& id, std::shared_ptr<BaseFB> block);
+    void remove_block(const std::string& id);
+    std::shared_ptr<BaseFB> get_block(const std::string& id) const;
+    void create_connection(const std::string& from, const std::string& to);
+    void delete_connection(const std::string& from, const std::string& to);
+    const auto& get_all_blocks() const { return blocks; }
+    void set_start_block(const std::string& id);
+    std::shared_ptr<BaseFB> get_start_block() const;
 private:
     std::map<std::string, std::shared_ptr<BaseFB>> blocks;
+    std::map<std::string, std::string> connections;
     std::string start_block;
 };
 
