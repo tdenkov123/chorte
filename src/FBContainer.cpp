@@ -18,20 +18,17 @@ std::shared_ptr<BaseFB> FBContainer::get_block(const std::string& id) const {
 }
 
 void FBContainer::create_connection(const std::string& from, const std::string& to) {
-    std::string from_block_id = from.substr(0, from.find('.'));
-    std::string from_port = from.substr(from.find('.'), from.size());
-    std::string to_block_id = to.substr(0, to.find('.'));
-    std::string to_port = to.substr(to.find('.'), to.size());
-
-    connections[from_block_id] = to_block_id;
+    connections.insert({from, to});
 }
 
 void FBContainer::delete_connection(const std::string& from, const std::string& to) {
-
-}
-
-const auto& FBContainer::get_all_blocks() const {
-    return blocks;
+    auto range = connections.equal_range(from);
+    for (auto it = range.first; it != range.second; ++it) {
+        if (it->second == to) {
+            connections.erase(it);
+            break;
+        }
+    }
 }
 
 void FBContainer::set_start_block(const std::string& id) {

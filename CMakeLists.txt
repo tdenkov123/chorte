@@ -11,7 +11,7 @@ set(Sources
     src/main.cpp
     src/TCPSockInet.cpp
     src/FBContainer.cpp
-    src/FunctionBlock.h
+    src/FBTypes.h
     src/RuntimeEnvironment.cpp
 )
 

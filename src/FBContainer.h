@@ -14,12 +14,14 @@ public:
     std::shared_ptr<BaseFB> get_block(const std::string& id) const;
     void create_connection(const std::string& from, const std::string& to);
     void delete_connection(const std::string& from, const std::string& to);
-    const auto& get_all_blocks() const { return blocks; }
+    std::multimap<std::string, std::string> get_connections() const { return connections; };
+    
+    std::map<std::string, std::shared_ptr<BaseFB>> get_all_blocks() const { return blocks; }
     void set_start_block(const std::string& id);
     std::shared_ptr<BaseFB> get_start_block() const;
 private:
     std::map<std::string, std::shared_ptr<BaseFB>> blocks;
-    std::map<std::string, std::string> connections;
+    std::multimap<std::string, std::string> connections;
     std::string start_block;
 };
 
