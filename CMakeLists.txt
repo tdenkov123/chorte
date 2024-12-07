@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 set(PROJECT_NAME main)
 set(CMAKE_CXX_STANDARD 17)
-
+set(CMAKE_BUILD_TYPE Debug)
 
 set(workspaceFolder $(WORKING_DIRECTORY))
 project(${PROJECT_NAME} VERSION 1.0.0)
