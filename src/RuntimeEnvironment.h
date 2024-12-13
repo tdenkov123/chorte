@@ -8,6 +8,7 @@
 #include <queue>
 #include <thread>
 #include <mutex>
+#include <chrono>
 
 class RuntimeEnvironment {
 private:
