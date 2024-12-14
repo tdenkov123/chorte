@@ -25,7 +25,7 @@ void FBContainer::create_data_connection(const std::string& from, const std::str
     std::string to_fb = to.substr(0, pos_to);
     std::string to_port = to.substr(pos_to + 1);
 
-    data_connections.insert({from, to});
+    data_connections.insert({from_fb, Connection(false, from_fb, from_port, to_fb, to_port)});
 }
 
 void FBContainer::create_event_connection(const std::string& from, const std::string& to) {
@@ -36,13 +36,25 @@ void FBContainer::create_event_connection(const std::string& from, const std::st
     std::string to_fb = to.substr(0, pos_to);
     std::string to_port = to.substr(pos_to + 1);
 
-    event_connections.insert({from, to});
+    event_connections.insert({from_fb, Connection(true, from_fb, from_port, to_fb, to_port)});
 }
 
 void FBContainer::delete_data_connection(const std::string& from, const std::string& to) {
-    auto range = data_connections.equal_range(from);
+    auto pos_from = from.find('.');
+    auto pos_to = to.find('.');
+    if (pos_from == std::string::npos || pos_to == std::string::npos) {
+        throw std::invalid_argument("Invalid format for 'from' or 'to' parameter.");
+    }
+    std::string from_fb = from.substr(0, pos_from);
+    std::string from_port = from.substr(pos_from + 1);
+    std::string to_fb = to.substr(0, pos_to);
+    std::string to_port = to.substr(pos_to + 1);
+
+    Connection target_conn(false, from_fb, from_port, to_fb, to_port);
+
+    auto range = data_connections.equal_range(from_fb);
     for (auto it = range.first; it != range.second; ++it) {
-        if (it->second == to) {
+        if (it->second == target_conn) {
             data_connections.erase(it);
             break;
         }
@@ -50,9 +62,21 @@ void FBContainer::delete_data_connection(const std::string& from, const std::str
 }
 
 void FBContainer::delete_event_connection(const std::string& from, const std::string& to) {
-    auto range = event_connections.equal_range(from);
+    auto pos_from = from.find('.');
+    auto pos_to = to.find('.');
+    if (pos_from == std::string::npos || pos_to == std::string::npos) {
+        throw std::invalid_argument("Invalid format for 'from' or 'to' parameter.");
+    }
+    std::string from_fb = from.substr(0, pos_from);
+    std::string from_port = from.substr(pos_from + 1);
+    std::string to_fb = to.substr(0, pos_to);
+    std::string to_port = to.substr(pos_to + 1);
+
+    Connection target_conn(false, from_fb, from_port, to_fb, to_port);
+
+    auto range = event_connections.equal_range(from_fb);
     for (auto it = range.first; it != range.second; ++it) {
-        if (it->second == to) {
+        if (it->second == target_conn) {
             event_connections.erase(it);
             break;
         }
