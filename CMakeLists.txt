@@ -11,6 +11,7 @@ set(Sources
     src/main.cpp
     src/TCPSockInet.cpp
     src/FBContainer.cpp
+    src/FBootReader.cpp
     src/FBTypes.h
     src/RuntimeEnvironment.cpp
 )

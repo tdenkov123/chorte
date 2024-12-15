@@ -9,9 +9,11 @@
 #include <unordered_map>
 #include <functional>
 
+using DataVariant = std::variant<bool, int, float, double, std::string>;
+
 class BaseFB {
 public:
-    using DataVariant = std::variant<bool, int, float, double, std::string>;
+    // using DataVariant = std::variant<bool, int, float, double, std::string>;
 
     virtual ~BaseFB() = default;
     virtual void execute() = 0;

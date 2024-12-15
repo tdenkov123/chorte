@@ -41,6 +41,7 @@ public:
     void delete_event_connection(const std::string& from, const std::string& to);
     std::multimap<std::string, Connection> get_data_connections() const { return data_connections; };
     std::multimap<std::string, Connection> get_event_connections() const { return event_connections; };
+    void force_value(const std::string& id, const std::string& port, const DataVariant& value);
     
     std::map<std::string, std::shared_ptr<BaseFB>> get_all_blocks() const { return blocks; }
     void set_start_block(const std::string& id);

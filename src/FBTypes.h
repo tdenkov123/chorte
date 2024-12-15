@@ -11,7 +11,10 @@
 
 class START: public BaseFB {
 public:
-    explicit START(const std::string& _name) : BaseFB(_name) {}
+    explicit START(const std::string& _name) : BaseFB(_name) {
+        set_event_output("WARM", false);
+        set_event_output("COLD", false);
+    }
     void execute() override {}
 };
 

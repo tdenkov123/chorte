@@ -103,3 +103,11 @@ std::shared_ptr<BaseFB> FBContainer::get_start_block() const {
 
     throw std::runtime_error("Start block ID is set but not found in the container.");
 }
+
+void FBContainer::force_value(const std::string& id, const std::string& port, const DataVariant& value) {
+    auto it = blocks.find(id);
+    if (it == blocks.end()) {
+        throw std::invalid_argument("Block with the given ID does not exist.");
+    }
+    it->second->set_data_input(port, value);
+}
