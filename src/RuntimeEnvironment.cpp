@@ -27,10 +27,7 @@ void RuntimeEnvironment::process() {
         const auto& event_connections = container.get_event_connections();
         auto event_range = event_connections.equal_range(current_fb->get_name());
 
-        const auto& data_connections = container.get_event_connections();
-        auto data_range = data_connections.equal_range(current_fb->get_name());
-
-        for (auto it = data_range.first; it != data_range.second; ++it) {
+        for (auto it = event_range.first; it != event_range.second; ++it) {
             auto conn = it->second;
             auto next_fb = container.get_block(conn.to_fb);
             if (next_fb) {
@@ -41,6 +38,9 @@ void RuntimeEnvironment::process() {
             }
         }
 
+        const auto& data_connections = container.get_data_connections();
+        auto data_range = data_connections.equal_range(current_fb->get_name());
+
         for (auto& it = data_range.first; it != data_range.second; ++it) {
             auto conn = it->second;
             auto next_fb = container.get_block(conn.to_fb);
@@ -48,9 +48,10 @@ void RuntimeEnvironment::process() {
                 auto outputs = current_fb->get_data_outputs();
                 if (outputs.size()) {
                     auto value = outputs.find(conn.from_port);
-                    if (value != outputs.end()) next_fb->set_data_input(conn.to_port, value->second);   
+                    if (value != outputs.end()) next_fb->set_data_input(conn.to_port, value->second);
                 }
             }
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 }
