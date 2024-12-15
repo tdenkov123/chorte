@@ -8,11 +8,11 @@ RuntimeEnvironment::~RuntimeEnvironment() {
     }
 }
 
-void RuntimeEnvironment::run() {
-    _runtime_thread = std::thread(&RuntimeEnvironment::process, this);
+void RuntimeEnvironment::run(uint32_t frequency) {
+    _runtime_thread = std::thread(&RuntimeEnvironment::process, this, frequency);
 }
 
-void RuntimeEnvironment::process() {
+void RuntimeEnvironment::process(uint32_t frequency) {
     std::queue<std::shared_ptr<BaseFB>> queue;
     auto start_fb = container.get_start_block();
     queue.push(start_fb);
@@ -52,5 +52,6 @@ void RuntimeEnvironment::process() {
                 }
             }
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(frequency));
     }
 }

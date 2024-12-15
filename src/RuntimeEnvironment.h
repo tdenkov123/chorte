@@ -20,8 +20,8 @@ public:
     RuntimeEnvironment(const RuntimeEnvironment&) = delete;
     RuntimeEnvironment& operator=(const RuntimeEnvironment&) = delete;
     
-    void process();
-    void run();
+    void process(uint32_t frequency);
+    void run(uint32_t frequency);
 };
 
 #endif // RUNTIMEENVIRONMENT_H

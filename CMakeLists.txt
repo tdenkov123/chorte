@@ -9,6 +9,7 @@ project(${PROJECT_NAME} VERSION 1.0.0)
 
 set(Sources
     src/main.cpp
+    src/Chorte.cpp
     src/TCPSockInet.cpp
     src/FBContainer.cpp
     src/FBootReader.cpp

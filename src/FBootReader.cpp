@@ -1,8 +1,6 @@
 #include "FBootReader.h"
 
-FBootReader::FBootReader(const std::string& filename, FBContainer& container) : container(&container) {
-    read_file(filename);
-}
+FBootReader::FBootReader(FBContainer& container) : container(&container) {}
 
 FBootReader::~FBootReader() {
 }

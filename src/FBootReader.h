@@ -15,7 +15,7 @@ private:
     FBContainer* container;
 
 public:
-    FBootReader(const std::string& filename, FBContainer& container);
+    FBootReader(FBContainer& container);
     ~FBootReader();
     
     bool read_file(const std::string& filename);
