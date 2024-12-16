@@ -7,6 +7,7 @@
 #include "RuntimeEnvironment.h"
 #include "FBootReader.h"
 #include "TCPSockInet.h"
+#include "XMLParser.h"
 
 #include <argparse/argparse.hpp>
 
@@ -17,6 +18,9 @@ class Chorte {
 private:
     FBContainer container;
     uint32_t runtime_frequency;
+
+    std::string host;
+    uint16_t port;
 
 public:
     Chorte() {}

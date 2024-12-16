@@ -1,7 +1,7 @@
 #include "TCPSockInet.h"
 
 
-TCPSockInet::TCPSockInet() {
+TCPSockInet::TCPSockInet(std::string host, uint16_t port): host(host), port(port) {
     sockpp::initialize();
 }
 

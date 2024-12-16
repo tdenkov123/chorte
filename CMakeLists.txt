@@ -11,6 +11,7 @@ set(Sources
     src/main.cpp
     src/Chorte.cpp
     src/TCPSockInet.cpp
+    src/XMLParser.cpp
     src/FBContainer.cpp
     src/FBootReader.cpp
     src/FBTypes.h

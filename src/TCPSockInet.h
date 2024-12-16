@@ -14,7 +14,7 @@
 
 class TCPSockInet: public BaseInet {
 public:
-    TCPSockInet();
+    TCPSockInet(std::string host = "localhost", uint16_t port = 61499);
     virtual ~TCPSockInet(); 
 
     bool connect();
