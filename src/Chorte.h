@@ -21,10 +21,11 @@ private:
 
     std::string host;
     uint16_t port;
+    TCPSockInet* server;
 
 public:
-    Chorte() {}
-    ~Chorte() {}
+    Chorte() = default;
+    ~Chorte() = default;
 
     void init(int argc, char** argv);
     void run();

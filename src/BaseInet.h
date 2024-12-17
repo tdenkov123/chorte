@@ -5,9 +5,10 @@
 
 #include <string>
 
+#include "XMLParser.h"
+
 class BaseInet {
 public:
-    BaseInet() {};
     virtual ~BaseInet() {}; 
     virtual bool connect() = 0;
     virtual bool disconnect() = 0;

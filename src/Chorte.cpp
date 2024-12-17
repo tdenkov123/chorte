@@ -30,23 +30,14 @@ void Chorte::init(int argc, char** argv) {
     std::string filename = program.get<std::string>("--file");
     FBootReader boot_reader(this->container);
     boot_reader.read_file(filename);
+
+    server = new TCPSockInet(this->host, this->port, this->container);
 }
 
 void Chorte::run() {
+    while (!server->connect());
+    std::thread server_thread(&TCPSockInet::server_loop, server);
+
     RuntimeEnvironment runtime_env(this->container);
     runtime_env.run(this->runtime_frequency);
-
-    TCPSockInet sock_inet(this->host, this->port);
-    XMLParser parser(this->container);
-    sock_inet.connect();
-    std::string resp;
-    while (1) {
-        try {
-            std::string recv = sock_inet.read();
-            if (recv.size() != 0) resp = parser.read_request(recv);
-            if (resp.size() != 0) sock_inet.write(resp);
-        } catch (const std::exception& e) {
-            std::cerr << "[ERROR] Failed to read/write from/to socket: " << e.what() << std::endl;
-        }
-    }
 }
